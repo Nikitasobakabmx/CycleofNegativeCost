@@ -6,16 +6,15 @@
 
 class Graph
 {
-    public:
+    private:
         std::string name;
-        const int INFINITY = 0x0FFF;
+        const int INFINITY = 0xFFFF;
         unsigned int edges = 0;
         unsigned int nodes = 0;
         std::list<Edge> *enteredGraph = NULL;
         std::list<Edge> *negativeCostGraph = NULL;
         std::list<std::string> *nodesName = NULL;
-        
-    
+    public:
         Graph();
         Graph(std::string name);
         Graph(Graph& copy);

@@ -6,12 +6,30 @@
 int main(int argc, char *argv[])
 {
     Graph firstGraph;
-    firstGraph.openDot("example.dot");
+    std::string name;
+    if(argc >=2)
+        name = argv[1];
+    else 
+    {
+        std::cout << "Insert file name : ";
+        std::cin >> name;
+    }
+    try
+    {
+    firstGraph.openDot(name);
+    }
+    catch(except ex)
+    {
+        std::cout << ex.what() << std::endl;
+        return 1;
+    }
     std::cout << "Work start\nFile is open" << std::endl;
-    try{
-    if(firstGraph.findNegativeCost())
-        firstGraph.saveToDot();
-    }catch(except ex)
+    try
+    {
+        if(firstGraph.findNegativeCost())
+            firstGraph.saveToDot();
+    }
+    catch(except ex)
     {
         std::cout << ex.what() << std::endl;
     }

@@ -197,7 +197,10 @@ std::ostream& operator<<(std::ostream &os, Graph &graph)
     for(auto it : *graph.enteredGraph)
         os << it << "\n";
     if(graph.negativeCostGraph == NULL)
+    {
+        os << "Graph hasn\'t negative cycle!\n";
         return os;
+    }
     os << "\t!Negative cycle!\n";
     for(auto it : *graph.negativeCostGraph)
         os << it << "\n";
