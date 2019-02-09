@@ -7,13 +7,13 @@
 class Graph
 {
     private:
-        std::string name;
-        const int INFINITY = 0xFFFF;
-        unsigned int edges = 0;
-        unsigned int nodes = 0;
-        std::list<Edge> *enteredGraph = NULL;
-        std::list<Edge> *negativeCostGraph = NULL;
-        std::list<std::string> *nodesName = NULL;
+        std::string name;//имя графа
+        const int INFINITY = 0xFFFF;//Бесконечное значение
+        unsigned int edges = 0;//счетчик ребер
+        unsigned int nodes = 0;//счетчик вершин
+        std::list<Edge> *enteredGraph = NULL;//список вводимого графа
+        std::list<Edge> *negativeCostGraph = NULL;//список найденого графа
+        std::list<std::string> *nodesName = NULL;//список имен вершин
     public:
         Graph();
         Graph(std::string name);

@@ -5,7 +5,7 @@
 #include <map>
 #include <algorithm>
 
-Graph::Graph()
+Graph::Graph()//default constructor
 {
 
 }
@@ -13,15 +13,23 @@ Graph::Graph(std::string name)
 {
     this->openDot(name);
 }
-Graph::Graph(Graph& copy)
+Graph::Graph(Graph& copy)//copy constructor
 {
     this->name = copy.name;
     this->edges = copy.edges;
     this->nodes = copy.nodes;
+    if(enteredGraph != NULL)
+        delete enteredGraph;
+    if(negativeCostGraph != NULL)
+        delete negativeCostGraph;
+    if(nodesName != NULL)
+        delete nodesName;
     if(copy.enteredGraph != NULL)
         this->enteredGraph = new std::list<Edge>(*(copy.enteredGraph));
     if(copy.negativeCostGraph != NULL)
         this->negativeCostGraph = new std::list<Edge>(*(copy.negativeCostGraph));
+    if(copy.nodesName != NULL)
+        this->nodesName = new std::list<std::string>(*(copy.nodesName));
 }
 
 void Graph::show()
@@ -36,7 +44,7 @@ void Graph::openDot(std::string name)//ebat' kostil'
     std::ifstream fromFile(name);
     if(!fromFile.is_open())
         throw except((char*)"File isn\'t exist!");
-    std::string tmp;
+    std::string tmp;//var for rubish
     fromFile >> tmp >> this->name >> tmp;
     if(enteredGraph != NULL)
     {
@@ -209,4 +217,10 @@ std::ostream& operator<<(std::ostream &os, Graph &graph)
 
 Graph::~Graph()
 {
+    if(enteredGraph != NULL)
+        delete enteredGraph;
+    if(negativeCostGraph != NULL)
+        delete negativeCostGraph;
+    if(nodesName != NULL)
+        delete nodesName;
 }
