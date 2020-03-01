@@ -1,32 +1,33 @@
-#include <list>
+#pragma once
 #include <string>
-#include <vector>
-
-struct edge{
-    int a, b;
-    int cost;
-};
+#include <list>
+#include <ostream>
+#include "Edge.h"
 
 class Graph
 {
-private:
-    int nodes, edges;
-    std::string nameGraph;
-    std::vector<edge> graph;
-    std::vector<int> path;
-    const int INF = 1000000000;
-public:
-    Graph();
-    Graph(const edge &item);
-    Graph(const std::string &name);
-    Graph(const Graph &graph);
-    std::string setName(std::string name);
-    bool openTXT(const std::string &name);
-    bool saveToDOT(const std::string &name);
-    bool openDOT(const std::string &name);
-    bool saveToDOT();
-    bool openDOT();
-    bool serchNegativeCycle();
-    void showNegativeCycle();
-    ~Graph();
+    private:
+        std::string name;//имя графа
+        const int INFINITY = 0xFFFF;//Бесконечное значение
+        unsigned int edges = 0;//счетчик ребер
+        unsigned int nodes = 0;//счетчик вершин
+        std::list<Edge> *enteredGraph = NULL;//список вводимого графа
+        std::list<Edge> *negativeCostGraph = NULL;//список найденого графа
+        std::list<std::string> *nodesName = NULL;//список имен вершин
+    public:
+        Graph();
+        Graph(std::string name);
+        Graph(Graph& copy);
+        void show();
+        void openDot(std::string name);
+        bool saveToDot();
+        bool saveToDot(std::string name);
+        bool saveToDot(std::list<Edge> Graph);
+        bool saveToDot(std::string name, std::list<Edge> Graph);
+        bool findNegativeCost();
+        bool findNegativeCost(std::list<Edge> *Graph);
+        void operator +=(const Edge &edge);
+        void add(const Edge &edge);
+        friend std::ostream& operator<<(std::ostream &os, Graph &graph);
+        ~Graph();
 };

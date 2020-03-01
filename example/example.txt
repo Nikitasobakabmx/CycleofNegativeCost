@@ -1,0 +1,5 @@
+digraph g {
+	2 -> 4 [cost = -3, label = a]
+	4 -> 1 [cost = -1, label = b]
+	1 -> 2 [cost = -1, label = c]
+}
