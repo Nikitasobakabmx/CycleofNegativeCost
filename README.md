@@ -1,11 +1,11 @@
 Find negative cycles
 ------------------
-Input
-<br> file with graph in GraphViz style
-Output
-<br> image with founded negative cycles
-example:
-[[image:example/test.png]]
+<br> Input
+<br> - file with graph in GraphViz style
+<br> Output
+<br> - image with founded negative cycles
+<br> Example:
+<br>[[image:example/test.png]]
 
 input text:
 <pre>
