@@ -5,7 +5,7 @@ Find negative cycles
 <br> Output
 <br> - image with founded negative cycles
 <br> Example:
-![Image alt](https://github.com/Nikitasobakabmx/CycleofNegativeCost/raw/master/example/test.png)
+<br>![Image alt](https://github.com/Nikitasobakabmx/CycleofNegativeCost/raw/master/example/test.png)
 
 input text:
 <pre>
